@@ -39,7 +39,7 @@ To run the new image, use -
 ````
 docker run -P -it --rm -p 9191:9191 --env DB_URL=jdbc:mysql://host.docker.internal:3306/doctorDB?createDatabaseIfNotExist=true --env DB_USERNAME=root  --env DB_PASSWORD=root -m 256mm --cpus=1 -d --name doctor-patient-rest-service doctor-patient-rest-service:latest
 ````
-Note :- In case if you use local database then only we have to provide host like 'host.docker.internal' in place of localhost
+**Note :- ** In case if you use local database then only we have to provide host like 'host.docker.internal' in place of localhost
 
 **Docker-Compose**
 
