@@ -1,0 +1,40 @@
+spring:
+  application:
+    name: doctor-patient-rest-service
+  datasource:
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+  tomcat:
+    max-wait: 20000
+    max-active: 50
+    max-idle: 20
+    min-idle: 15
+  jpa:
+    hibernate:
+      ddl-auto: update
+      hibernate:
+        #dialect: org.hibernate.dialect.H2Dialect
+        dialect: org.hibernate.dialect.MySQL8Dialect
+        format_sql: true
+        show_sql: falseHibernateJpaConfiguration
+        id:
+          new_generator_mappings: false
+        jdbc:
+          time_zone: UTC
+  security:
+    user:
+      name: ${API_USERNAME}
+      password: ${API_PASSWORD}
+
+server:
+  port: 9191 # This is the default port anyway, but you can change it here
+  tomcat:
+    accept-count: 20000
+    max-connections: 20000
+    thread:
+      max: 1000
+
+management:
+  security:
+    enabled: false

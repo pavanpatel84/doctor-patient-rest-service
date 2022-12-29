@@ -1,0 +1,18 @@
+version: '2.2'
+services:
+    doctor-patient-rest-service:
+        build:
+          context: ./
+          dockerfile: Dockerfile
+        ports:
+            - '9191:9191'
+        environment:
+          DB_URL: jdbc:mysql://host.docker.internal:3306/doctorDB?createDatabaseIfNotExist=true
+          DB_USERNAME: root
+          DB_PASSWORD: root
+          API_USERNAME: TestUser
+          API_PASSWORD: test123
+        image: doctorpatient
+        mem_limit: "256m"
+        cpu_count: 1
+        cpu_percent: 50
