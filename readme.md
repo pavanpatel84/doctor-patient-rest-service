@@ -1,5 +1,3 @@
-![doctor-patient-rest-service](https://github.com/pavanpatel84/doctor-patient-rest-service.git)
-
 ## doctor-patient-rest-service
 Production ready maven based Spring Boot starter application with example cases of handling Doctor and Patient Scenario with Spring.
 
@@ -13,7 +11,6 @@ Starter kit for booting up the development of a API oriented and transaction bas
 - **Lombok**          - Provides automated getter/setters
 - **Actuator**        - Application insights on the fly
 - **Spring Security** - Spring's security layer
-- **Thymeleaf**       - Template Engine
 - **Authentication**  - Basic Authentication
 - **Swagger**         - In-built swagger2 documentation support
 - **Docker**          - Docker containers
@@ -42,6 +39,7 @@ To run the new image, use -
 ````
 docker run -P -it --rm -p 9191:9191 --env DB_URL=jdbc:mysql://host.docker.internal:3306/doctorDB?createDatabaseIfNotExist=true --env DB_USERNAME=root  --env DB_PASSWORD=root -m 256mm --cpus=1 -d --name doctor-patient-rest-service doctor-patient-rest-service:latest
 ````
+**Note :- In case if you use local database then only we have to provide host like 'host.docker.internal' in place of localhost **
 
 **Docker-Compose**
 
