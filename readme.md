@@ -71,6 +71,44 @@ http://<host-name>:9191/swagger-ui.html (Ex:- http://localhost:9191/swagger-ui.h
 - **Run Without Docker**  - Please make sure update 'application.yml' file For DB connection and API Authentication User Name and Password
 - **Run With Docker**     - In case if you use local database then only we have to provide host like 'host.docker.internal' in place of localhost in Docker run command
 
+## API End Point
+
+- **listAllDoctors**
+````
+**Method :** GET
+**URL :** http://localhost:9191/v1/api/doctors/list
+**Header :** Authorization : Basic VGVzdFVzZXI6dGVzdDEyMw==
+
+**Case 1 :- Valid Request**
+    [
+        {
+            "id": 1,
+            "name": "Dr. Trivadi",
+            "email": "test@gmail.com",
+            "degree": "MBBS",
+            "specialization": "Heart Specialist"
+        }
+    ]
+
+Case 2:-  InValid Request with Authorization Missing in Header
+    {
+        "timestamp": "2022-12-30T08:06:05.844+00:00",
+        "status": 401,
+        "error": "Unauthorized",
+        "path": "/v1/api/doctors/list"
+    }
+
+````
+
+- **getDoctorById**          - In case if you use local database then only we have to provide host like 'host.docker.internal' in place of localhost in Docker run command
+- **saveDoctor**             - In case if you use local database then only we have to provide host like 'host.docker.internal' in place of localhost in Docker run command
+- **addPatientUnderDoctor**  - In case if you use local database then only we have to provide host like 'host.docker.internal' in place of localhost in Docker run command
+- **updateDoctorNameById**   - In case if you use local database then only we have to provide host like 'host.docker.internal' in place of localhost in Docker run command
+- **dischargePatient**       - In case if you use local database then only we have to provide host like 'host.docker.internal' in place of localhost in Docker run command
+- **dischargePatient**       - In case if you use local database then only we have to provide host like 'host.docker.internal' in place of localhost in Docker run command
+
+
+
 
 ## Contributors
 [Pavan Patel](https://www.linkedin.com/in/pavan-patel-991a5a38/)
