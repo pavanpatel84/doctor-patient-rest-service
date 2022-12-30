@@ -19,6 +19,14 @@ Starter kit for booting up the development of a API oriented and transaction bas
 
 ## Application Structure
 
+
+## Build Project With Unit test cases
+There are multiple unit test cases written to cover the different components of the application.
+
+````
+mvn clean install
+````
+
 ## Running the server locally
 The doctor-patient-rest-service application can be started using your favourite IDE and its run configuration support. If you are a terminal savvy, please use the following command -
 
@@ -39,7 +47,6 @@ To run the new image, use -
 ````
 docker run -P -it --rm -p 9191:9191 --env DB_URL=jdbc:mysql://host.docker.internal:3306/doctorDB?createDatabaseIfNotExist=true --env DB_USERNAME=root  --env DB_PASSWORD=root -m 256mm --cpus=1 -d --name doctor-patient-rest-service doctor-patient-rest-service:latest
 ````
-Note :- In case if you use local database then only we have to provide host like 'host.docker.internal' in place of localhost
 
 **Docker-Compose**
 
@@ -58,12 +65,12 @@ Swagger documentation is in-built in this starter-kit and can be accessed at the
 http://<host-name>:9191/swagger-ui.html (Ex:- http://localhost:9191/swagger-ui.html#/)
 ````
 
-## Unit test cases
-There are multiple unit test cases written to cover the different components of the application.
 
-````
-mvn clean install
-````
+## Note
+
+- **Run Without Docker**  - Please make sure update 'application.yml' file For DB connection and API Authentication User Name and Password
+- **Run With Docker**     - In case if you use local database then only we have to provide host like 'host.docker.internal' in place of localhost in Docker run command
+
 
 ## Contributors
 [Pavan Patel](https://www.linkedin.com/in/pavan-patel-991a5a38/)

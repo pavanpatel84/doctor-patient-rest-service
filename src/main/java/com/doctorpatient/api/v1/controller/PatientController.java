@@ -59,8 +59,13 @@ public class PatientController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Patient> updatePatientById(@PathVariable("id") int patientId, @RequestBody Patient patient) throws EntityNotFoundException {
-        return new ResponseEntity<Patient>(patientService.updatePatientById(patientId, patient), HttpStatus.OK);
+    public PatientDto updatePatientById(@PathVariable("id") int patientId, @RequestBody Patient patient) throws EntityNotFoundException {
+
+        Patient updatedPatient = patientService.updatePatientById(patientId, patient);
+        if (updatedPatient != null) {
+            return mapper.map(updatedPatient, PatientDto.class);
+        }
+        return null;
     }
 
     @DeleteMapping("/{id}")
@@ -71,9 +76,12 @@ public class PatientController {
 
     // assign doctor to Patient
     @PutMapping("/{pId}/doctor/{dId}")
-    public ResponseEntity<Patient> assignDoctorToPatient(@PathVariable(name="pId", required = true) int patientId,
-                                                         @PathVariable(name="dId", required = true) int doctorId) {
-        patientService.assignDoctorToPatient(patientId, doctorId);
-        return new ResponseEntity<Patient>(patientService.assignDoctorToPatient(patientId, doctorId), HttpStatus.OK);
+    public PatientDto assignDoctorToPatient(@PathVariable(name = "pId", required = true) int patientId,
+                                                         @PathVariable(name = "dId", required = true) int doctorId) {
+        Patient updatedPatient = patientService.assignDoctorToPatient(patientId, doctorId);
+        if (updatedPatient != null) {
+            return mapper.map(updatedPatient, PatientDto.class);
+        }
+        return null;
     }
 }

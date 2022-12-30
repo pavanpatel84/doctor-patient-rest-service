@@ -1,999 +1,1231 @@
 {
 	"info": {
-		"_postman_id": "f1283dce-02fa-41f1-96bc-e3cc45b16e9b",
+		"_postman_id": "2be93bb5-5ce9-46d4-9723-f593f2916a48",
 		"name": "DoctorPatient - RestAPI",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "20110529"
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "3058790"
 	},
 	"item": [
 		{
-			"name": "Get All Doctors",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:9090/api/doctors/list",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "9090",
-					"path": [
-						"api",
-						"doctors",
-						"list"
-					]
-				}
-			},
-			"response": [
+			"name": "Doctor",
+			"item": [
 				{
-					"name": "Get All Doctors",
-					"originalRequest": {
+					"name": "listAllDoctors",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": {
+								"password": "test123",
+								"username": "TestUser"
+							}
+						},
 						"method": "GET",
 						"header": [],
-						"url": {
-							"raw": "http://localhost:9090/api/doctors/list",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "9090",
-							"path": [
-								"api",
-								"doctors",
-								"list"
-							]
-						}
+						"url": "http://localhost:9191/v1/api/doctors/list"
 					},
-					"status": "OK",
-					"code": 200,
-					"_postman_previewlanguage": "json",
-					"header": [
+					"response": [
 						{
-							"key": "Content-Type",
-							"value": "application/json"
+							"name": "Unauthorized Request",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": "http://localhost:9191/v1/api/doctors/list"
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "WWW-Authenticate",
+									"value": "Basic realm=\"Realm\""
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 30 Dec 2022 08:06:05 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"timestamp\": \"2022-12-30T08:06:05.844+00:00\",\n    \"status\": 401,\n    \"error\": \"Unauthorized\",\n    \"path\": \"/v1/api/doctors/list\"\n}"
 						},
 						{
-							"key": "Transfer-Encoding",
-							"value": "chunked"
-						},
-						{
-							"key": "Date",
-							"value": "Wed, 29 Jun 2022 01:35:38 GMT"
-						},
-						{
-							"key": "Keep-Alive",
-							"value": "timeout=60"
-						},
-						{
-							"key": "Connection",
-							"value": "keep-alive"
+							"name": "Get All Doctors",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": "http://localhost:9191/v1/api/doctors/list"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 30 Dec 2022 08:10:44 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 1,\n        \"name\": \"Dr. Trivadi\",\n        \"email\": \"test@gmail.com\",\n        \"degree\": \"MBBS\",\n        \"specialization\": \"Heart Specialist\"\n    }\n]"
 						}
-					],
-					"cookie": [],
-					"body": "[\n    {\n        \"id\": 1,\n        \"name\": \"Dr. Emily\"\n    },\n    {\n        \"id\": 3,\n        \"name\": \"Dr. Emma\"\n    },\n    {\n        \"id\": 2,\n        \"name\": \"Dr. Peter\"\n    },\n    {\n        \"id\": 5,\n        \"name\": \"Dr. Chris\"\n    }\n]"
-				}
-			]
-		},
-		{
-			"name": "Get Doctor by Id",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:9090/api/doctors/2",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "9090",
-					"path": [
-						"api",
-						"doctors",
-						"2"
 					]
-				}
-			},
-			"response": [
-				{
-					"name": "Get Doctor by Id",
-					"originalRequest": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:9090/api/doctors/2",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "9090",
-							"path": [
-								"api",
-								"doctors",
-								"2"
-							]
-						}
-					},
-					"status": "OK",
-					"code": 200,
-					"_postman_previewlanguage": "json",
-					"header": [
-						{
-							"key": "Content-Type",
-							"value": "application/json"
-						},
-						{
-							"key": "Transfer-Encoding",
-							"value": "chunked"
-						},
-						{
-							"key": "Date",
-							"value": "Wed, 29 Jun 2022 01:36:37 GMT"
-						},
-						{
-							"key": "Keep-Alive",
-							"value": "timeout=60"
-						},
-						{
-							"key": "Connection",
-							"value": "keep-alive"
-						}
-					],
-					"cookie": [],
-					"body": "{\n    \"id\": 2,\n    \"name\": \"Dr. Peter\"\n}"
-				}
-			]
-		},
-		{
-			"name": "Save Doctor",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"Dr. Emma\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
 				},
-				"url": {
-					"raw": "http://localhost:9090/api/doctors/add",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "9090",
-					"path": [
-						"api",
-						"doctors",
-						"add"
-					]
-				}
-			},
-			"response": [
 				{
-					"name": "Save Doctor",
-					"originalRequest": {
+					"name": "getDoctorById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:9090/api/doctors/2"
+					},
+					"response": [
+						{
+							"name": "Get Doctor By Id",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": "http://localhost:9191/v1/api/doctors/1"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 30 Dec 2022 08:11:36 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"name\": \"Dr. Trivadi\",\n    \"email\": \"test@gmail.com\",\n    \"degree\": \"MBBS\",\n    \"specialization\": \"Heart Specialist\"\n}"
+						}
+					]
+				},
+				{
+					"name": "saveDoctor",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": {
+								"password": "test123",
+								"username": "TestUser"
+							}
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Dr. Dev\"\r\n}",
+							"raw": "{\r\n  \"degree\": \"MBBS\",\r\n  \"email\": \"test@gmail.com\",\r\n  \"name\": \"Dr. Trivadi\",\r\n  \"specialization\": \"Heart Specialist\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
 								}
 							}
 						},
-						"url": {
-							"raw": "http://localhost:9090/api/doctors/add",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "9090",
-							"path": [
-								"api",
-								"doctors",
-								"add"
-							]
-						}
+						"url": "http://localhost:9191/v1/api/doctors/add"
 					},
-					"status": "Created",
-					"code": 201,
-					"_postman_previewlanguage": "json",
-					"header": [
+					"response": [
 						{
-							"key": "Content-Type",
-							"value": "application/json"
-						},
-						{
-							"key": "Transfer-Encoding",
-							"value": "chunked"
-						},
-						{
-							"key": "Date",
-							"value": "Wed, 29 Jun 2022 01:37:09 GMT"
-						},
-						{
-							"key": "Keep-Alive",
-							"value": "timeout=60"
-						},
-						{
-							"key": "Connection",
-							"value": "keep-alive"
-						}
-					],
-					"cookie": [],
-					"body": "{\n    \"id\": 6,\n    \"name\": \"Dr. Dev\"\n}"
-				}
-			]
-		},
-		{
-			"name": "Update Doctor Name by Id",
-			"request": {
-				"method": "PUT",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:9090/api/doctors/2?name=Dr.+Emily",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "9090",
-					"path": [
-						"api",
-						"doctors",
-						"2"
-					],
-					"query": [
-						{
-							"key": "name",
-							"value": "Dr.+Emily"
+							"name": "Save Doctor",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"degree\": \"MBBS\",\r\n  \"email\": \"test@gmail.com\",\r\n  \"name\": \"Dr. Trivadi\",\r\n  \"specialization\": \"Heart Specialist\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:9191/v1/api/doctors/add"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 30 Dec 2022 08:10:22 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"name\": \"Dr. Trivadi\",\n    \"email\": \"test@gmail.com\",\n    \"degree\": \"MBBS\",\n    \"specialization\": \"Heart Specialist\"\n}"
 						}
 					]
-				}
-			},
-			"response": [
+				},
 				{
-					"name": "Update Doctor Name by Id",
-					"originalRequest": {
+					"name": "addPatientUnderDoctor",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": {
+								"password": "test123",
+								"username": "TestUser"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"name\": \"XYZ Patient\",\r\n\t\"disease\": \"ABC Disease\",\r\n\t\"dateOfBirth\": \"2022-12-30\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:9191/v1/api/doctors/1/patient"
+					},
+					"response": [
+						{
+							"name": "addPatientUnderDoctor",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\t\"name\": \"XYZ Patient\",\r\n\t\"disease\": \"ABC Disease\",\r\n\t\"dateOfBirth\": \"2022-12-30\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:9191/v1/api/doctors/1/patient"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/plain;charset=UTF-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "40"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 30 Dec 2022 08:13:24 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "Patient added under doctor successfully."
+						}
+					]
+				},
+				{
+					"name": "updateDoctorNameById",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": {
+								"password": "test123",
+								"username": "TestUser"
+							}
+						},
 						"method": "PUT",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:9090/api/doctors/6?name=Dr.+Devis",
+							"raw": "http://localhost:9191/v1/api/doctors/1?name=Dr. Atual Trivadi",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "9090",
+							"port": "9191",
 							"path": [
+								"v1",
 								"api",
 								"doctors",
-								"6"
+								"1"
 							],
 							"query": [
 								{
 									"key": "name",
-									"value": "Dr.+Devis"
+									"value": "Dr. Atual Trivadi"
 								}
 							]
 						}
 					},
-					"status": "OK",
-					"code": 200,
-					"_postman_previewlanguage": "json",
-					"header": [
+					"response": [
 						{
-							"key": "Content-Type",
-							"value": "application/json"
-						},
-						{
-							"key": "Transfer-Encoding",
-							"value": "chunked"
-						},
-						{
-							"key": "Date",
-							"value": "Wed, 29 Jun 2022 01:38:13 GMT"
-						},
-						{
-							"key": "Keep-Alive",
-							"value": "timeout=60"
-						},
-						{
-							"key": "Connection",
-							"value": "keep-alive"
-						}
-					],
-					"cookie": [],
-					"body": "{\n    \"id\": 6,\n    \"name\": \"Dr. Devis\"\n}"
-				}
-			]
-		},
-		{
-			"name": "Delete Doctor by Id",
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:9090/api/doctors/2",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "9090",
-					"path": [
-						"api",
-						"doctors",
-						"2"
-					]
-				}
-			},
-			"response": [
-				{
-					"name": "Delete Doctor by Id",
-					"originalRequest": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:9090/api/doctors/6",
-							"protocol": "http",
-							"host": [
-								"localhost"
+							"name": "updateDoctorNameById",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:9191/v1/api/doctors/1?name=Dr. Atual Trivadi",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9191",
+									"path": [
+										"v1",
+										"api",
+										"doctors",
+										"1"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "Dr. Atual Trivadi"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 30 Dec 2022 08:18:43 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
 							],
-							"port": "9090",
-							"path": [
-								"api",
-								"doctors",
-								"6"
-							]
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"name\": \"Dr. Atual Trivadi\",\n    \"email\": \"test@gmail.com\",\n    \"degree\": \"MBBS\",\n    \"specialization\": \"Heart Specialist\"\n}"
 						}
-					},
-					"status": "OK",
-					"code": 200,
-					"_postman_previewlanguage": "plain",
-					"header": [
-						{
-							"key": "Content-Type",
-							"value": "text/plain;charset=UTF-8"
-						},
-						{
-							"key": "Content-Length",
-							"value": "28"
-						},
-						{
-							"key": "Date",
-							"value": "Wed, 29 Jun 2022 01:38:53 GMT"
-						},
-						{
-							"key": "Keep-Alive",
-							"value": "timeout=60"
-						},
-						{
-							"key": "Connection",
-							"value": "keep-alive"
-						}
-					],
-					"cookie": [],
-					"body": "Doctor deleted successfully."
-				}
-			]
-		},
-		{
-			"name": "Add Patient under Doctor",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n\t\"name\": \"XYZ Patient\",\r\n\t\"disease\": \"ABC Disease\",\r\n\t\"dateOfBirth\": \"2002-09-09\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:9090/api/doctors/2/patient",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "9090",
-					"path": [
-						"api",
-						"doctors",
-						"2",
-						"patient"
 					]
-				}
-			},
-			"response": [
+				},
 				{
-					"name": "Add Patient under Doctor",
-					"originalRequest": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n\t\"name\": \"PQR Patient\",\r\n\t\"disease\": \"ABC Disease\",\r\n\t\"dateOfBirth\": \"2002-09-09\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
+					"name": "dischargePatient",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": {
+								"password": "test123",
+								"username": "TestUser"
 							}
 						},
-						"url": {
-							"raw": "http://localhost:9090/api/doctors/5/patient",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "9090",
-							"path": [
-								"api",
-								"doctors",
-								"5",
-								"patient"
-							]
-						}
-					},
-					"status": "OK",
-					"code": 200,
-					"_postman_previewlanguage": "plain",
-					"header": [
-						{
-							"key": "Content-Type",
-							"value": "text/plain;charset=UTF-8"
-						},
-						{
-							"key": "Content-Length",
-							"value": "40"
-						},
-						{
-							"key": "Date",
-							"value": "Wed, 29 Jun 2022 01:39:29 GMT"
-						},
-						{
-							"key": "Keep-Alive",
-							"value": "timeout=60"
-						},
-						{
-							"key": "Connection",
-							"value": "keep-alive"
-						}
-					],
-					"cookie": [],
-					"body": "Patient added under doctor successfully."
-				}
-			]
-		},
-		{
-			"name": "Discharge Patient",
-			"request": {
-				"method": "PUT",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:9090/api/doctors/2/patient/1",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "9090",
-					"path": [
-						"api",
-						"doctors",
-						"2",
-						"patient",
-						"1"
-					]
-				}
-			},
-			"response": [
-				{
-					"name": "Discharge Patient",
-					"originalRequest": {
 						"method": "PUT",
 						"header": [],
-						"url": {
-							"raw": "http://localhost:9090/api/doctors/5/patient/8",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "9090",
-							"path": [
-								"api",
-								"doctors",
-								"5",
-								"patient",
-								"8"
-							]
-						}
+						"url": "http://localhost:9191/v1/api/doctors/1/patient/1"
 					},
-					"status": "OK",
-					"code": 200,
-					"_postman_previewlanguage": "plain",
-					"header": [
+					"response": [
 						{
-							"key": "Content-Type",
-							"value": "text/plain;charset=UTF-8"
-						},
-						{
-							"key": "Content-Length",
-							"value": "32"
-						},
-						{
-							"key": "Date",
-							"value": "Wed, 29 Jun 2022 01:40:49 GMT"
-						},
-						{
-							"key": "Keep-Alive",
-							"value": "timeout=60"
-						},
-						{
-							"key": "Connection",
-							"value": "keep-alive"
+							"name": "dischargePatient",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"url": "http://localhost:9191/v1/api/doctors/1/patient/1"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/plain;charset=UTF-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "32"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 30 Dec 2022 08:20:04 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "Patient discharged successfully."
 						}
-					],
-					"cookie": [],
-					"body": "Patient discharged successfully."
+					]
+				},
+				{
+					"name": "deleteDoctorById",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": {
+								"password": "test123",
+								"username": "TestUser"
+							}
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:9191/v1/api/doctors/1"
+					},
+					"response": [
+						{
+							"name": "deleteDoctorById",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": "http://localhost:9191/v1/api/doctors/1"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/plain;charset=UTF-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "28"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 30 Dec 2022 08:21:15 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "Doctor deleted successfully."
+						}
+					]
 				}
 			]
 		},
 		{
-			"name": "Get All Patients",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:9090/api/patients/list",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "9090",
-					"path": [
-						"api",
-						"patients",
-						"list"
-					]
-				}
-			},
-			"response": [
+			"name": "Patient",
+			"item": [
 				{
 					"name": "Get All Patients",
-					"originalRequest": {
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": {
+								"password": "test123",
+								"username": "TestUser"
+							}
+						},
 						"method": "GET",
 						"header": [],
-						"url": {
-							"raw": "http://localhost:9090/api/patients/list",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "9090",
-							"path": [
-								"api",
-								"patients",
-								"list"
-							]
-						}
+						"url": "http://localhost:9191/v1/api/patients/list"
 					},
-					"status": "OK",
-					"code": 200,
-					"_postman_previewlanguage": "json",
-					"header": [
+					"response": [
 						{
-							"key": "Content-Type",
-							"value": "application/json"
-						},
-						{
-							"key": "Transfer-Encoding",
-							"value": "chunked"
-						},
-						{
-							"key": "Date",
-							"value": "Wed, 29 Jun 2022 01:41:06 GMT"
-						},
-						{
-							"key": "Keep-Alive",
-							"value": "timeout=60"
-						},
-						{
-							"key": "Connection",
-							"value": "keep-alive"
+							"name": "Get All Patients",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": "http://localhost:9191/v1/api/patients/list"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 30 Dec 2022 08:22:19 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 1,\n        \"name\": \"XYZ Patient\",\n        \"disease\": \"ABC Disease\",\n        \"dateOfBirth\": \"2022-12-30T00:00:00.000+00:00\"\n    }\n]"
 						}
-					],
-					"cookie": [],
-					"body": "[\n    {\n        \"id\": 3,\n        \"name\": \"Mikey\",\n        \"disease\": \"New Disease\",\n        \"dateOfBirth\": \"2002-09-09T00:00:00.000+00:00\",\n        \"doctor\": null\n    },\n    {\n        \"id\": 2,\n        \"name\": \"Bob\",\n        \"disease\": \"Cough and Cold\",\n        \"dateOfBirth\": \"2002-09-09T00:00:00.000+00:00\",\n        \"doctor\": {\n            \"id\": 1,\n            \"name\": \"Dr. Emily\"\n        }\n    },\n    {\n        \"id\": 6,\n        \"name\": \"XYZ Patient\",\n        \"disease\": \"ABC Disease\",\n        \"dateOfBirth\": \"2002-09-09T00:00:00.000+00:00\",\n        \"doctor\": null\n    },\n    {\n        \"id\": 8,\n        \"name\": \"PQR Patient\",\n        \"disease\": \"ABC Disease\",\n        \"dateOfBirth\": \"2002-09-09T00:00:00.000+00:00\",\n        \"doctor\": null\n    }\n]"
-				}
-			]
-		},
-		{
-			"name": "Get Patient by Id",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:9090/api/patients/2",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "9090",
-					"path": [
-						"api",
-						"patients",
-						"2"
 					]
-				}
-			},
-			"response": [
-				{
-					"name": "Get Patient by Id",
-					"originalRequest": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:9090/api/patients/2",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "9090",
-							"path": [
-								"api",
-								"patients",
-								"2"
-							]
-						}
-					},
-					"status": "OK",
-					"code": 200,
-					"_postman_previewlanguage": "json",
-					"header": [
-						{
-							"key": "Content-Type",
-							"value": "application/json"
-						},
-						{
-							"key": "Transfer-Encoding",
-							"value": "chunked"
-						},
-						{
-							"key": "Date",
-							"value": "Wed, 29 Jun 2022 01:41:19 GMT"
-						},
-						{
-							"key": "Keep-Alive",
-							"value": "timeout=60"
-						},
-						{
-							"key": "Connection",
-							"value": "keep-alive"
-						}
-					],
-					"cookie": [],
-					"body": "{\n    \"id\": 2,\n    \"name\": \"Bob\",\n    \"disease\": \"Cough and Cold\",\n    \"dateOfBirth\": \"2002-09-09T00:00:00.000+00:00\",\n    \"doctor\": {\n        \"id\": 1,\n        \"name\": \"Dr. Emily\"\n    }\n}"
-				}
-			]
-		},
-		{
-			"name": "Save Patient",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"John\",\r\n\t\"disease\": \"Fever\",\r\n\t\"dateOfBirth\": \"2000-09-09\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
 				},
-				"url": {
-					"raw": "http://localhost:9090/api/patients/add",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "9090",
-					"path": [
-						"api",
-						"patients",
-						"add"
-					]
-				}
-			},
-			"response": [
 				{
 					"name": "Save Patient",
-					"originalRequest": {
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": {
+								"password": "test123",
+								"username": "TestUser"
+							}
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Victor\",\r\n\t\"disease\": \"Fever\",\r\n\t\"dateOfBirth\": \"2000-09-09\"\r\n}",
+							"raw": "{\r\n    \"name\": \"John\",\r\n\t\"disease\": \"Fever\",\r\n\t\"dateOfBirth\": \"1990-20-09\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
 								}
 							}
 						},
-						"url": {
-							"raw": "http://localhost:9090/api/patients/add",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "9090",
-							"path": [
-								"api",
-								"patients",
-								"add"
-							]
-						}
+						"url": "http://localhost:9191/v1/api/patients/add"
 					},
-					"status": "Created",
-					"code": 201,
-					"_postman_previewlanguage": "json",
-					"header": [
+					"response": [
 						{
-							"key": "Content-Type",
-							"value": "application/json"
-						},
-						{
-							"key": "Transfer-Encoding",
-							"value": "chunked"
-						},
-						{
-							"key": "Date",
-							"value": "Wed, 29 Jun 2022 01:41:45 GMT"
-						},
-						{
-							"key": "Keep-Alive",
-							"value": "timeout=60"
-						},
-						{
-							"key": "Connection",
-							"value": "keep-alive"
+							"name": "Save Patient",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"John\",\r\n\t\"disease\": \"Fever\",\r\n\t\"dateOfBirth\": \"1990-20-09\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:9191/v1/api/patients/add"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 30 Dec 2022 08:23:04 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 2,\n    \"name\": \"John\",\n    \"disease\": \"Fever\",\n    \"dateOfBirth\": \"1991-08-09T00:00:00.000+00:00\"\n}"
 						}
-					],
-					"cookie": [],
-					"body": "{\n    \"id\": 9,\n    \"name\": \"Victor\",\n    \"disease\": \"Fever\",\n    \"dateOfBirth\": \"2000-09-09T00:00:00.000+00:00\",\n    \"doctor\": null\n}"
-				}
-			]
-		},
-		{
-			"name": "Update Patient by Id",
-			"request": {
-				"method": "PUT",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"Patient A1\",\r\n\t\"disease\": \"Disease A1\",\r\n\t\"dateOfBirth\": \"2002-09-09\"\r\n}\r\n",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:9090/api/patients/1",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "9090",
-					"path": [
-						"api",
-						"patients",
-						"1"
 					]
-				}
-			},
-			"response": [
+				},
+				{
+					"name": "Get Patient by Id",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": {
+								"password": "test123",
+								"username": "TestUser"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:9191/v1/api/patients/2"
+					},
+					"response": [
+						{
+							"name": "Get Patient by Id",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": "http://localhost:9191/v1/api/patients/2"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 30 Dec 2022 08:23:39 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 2,\n    \"name\": \"John\",\n    \"disease\": \"Fever\",\n    \"dateOfBirth\": \"1991-08-09T00:00:00.000+00:00\"\n}"
+						}
+					]
+				},
 				{
 					"name": "Update Patient by Id",
-					"originalRequest": {
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": {
+								"password": "test123",
+								"username": "TestUser"
+							}
+						},
 						"method": "PUT",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Victor\",\r\n\t\"disease\": \"Fever and Cold\",\r\n\t\"dateOfBirth\": \"2002-09-09\"\r\n}\r\n",
+							"raw": "{\r\n    \"name\": \"Patient A1\",\r\n\t\"disease\": \"Disease A1\",\r\n\t\"dateOfBirth\": \"2002-09-09\"\r\n}\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
 								}
 							}
 						},
-						"url": {
-							"raw": "http://localhost:9090/api/patients/9",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "9090",
-							"path": [
-								"api",
-								"patients",
-								"9"
-							]
-						}
+						"url": "http://localhost:9191/v1/api/patients/1"
 					},
-					"status": "OK",
-					"code": 200,
-					"_postman_previewlanguage": "json",
-					"header": [
+					"response": [
 						{
-							"key": "Content-Type",
-							"value": "application/json"
-						},
-						{
-							"key": "Transfer-Encoding",
-							"value": "chunked"
-						},
-						{
-							"key": "Date",
-							"value": "Wed, 29 Jun 2022 01:42:39 GMT"
-						},
-						{
-							"key": "Keep-Alive",
-							"value": "timeout=60"
-						},
-						{
-							"key": "Connection",
-							"value": "keep-alive"
-						}
-					],
-					"cookie": [],
-					"body": "{\n    \"id\": 9,\n    \"name\": \"Victor\",\n    \"disease\": \"Fever and Cold\",\n    \"dateOfBirth\": \"2002-09-09T00:00:00.000+00:00\",\n    \"doctor\": null\n}"
-				}
-			]
-		},
-		{
-			"name": "Delete Patient by Id",
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:9090/api/patients/1",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "9090",
-					"path": [
-						"api",
-						"patients",
-						"1"
-					]
-				}
-			},
-			"response": [
-				{
-					"name": "Delete Patient by Id",
-					"originalRequest": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:9090/api/patients/8",
-							"protocol": "http",
-							"host": [
-								"localhost"
+							"name": "Update Patient by Id",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Patient A1\",\r\n\t\"disease\": \"Disease A1\",\r\n\t\"dateOfBirth\": \"2002-09-09\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:9191/v1/api/patients/1"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 30 Dec 2022 08:28:03 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
 							],
-							"port": "9090",
-							"path": [
-								"api",
-								"patients",
-								"8"
-							]
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"name\": \"Patient A1\",\n    \"disease\": \"Disease A1\",\n    \"dateOfBirth\": \"2002-09-09T00:00:00.000+00:00\"\n}"
 						}
-					},
-					"status": "OK",
-					"code": 200,
-					"_postman_previewlanguage": "plain",
-					"header": [
-						{
-							"key": "Content-Type",
-							"value": "text/plain;charset=UTF-8"
-						},
-						{
-							"key": "Content-Length",
-							"value": "29"
-						},
-						{
-							"key": "Date",
-							"value": "Wed, 29 Jun 2022 01:43:07 GMT"
-						},
-						{
-							"key": "Keep-Alive",
-							"value": "timeout=60"
-						},
-						{
-							"key": "Connection",
-							"value": "keep-alive"
-						}
-					],
-					"cookie": [],
-					"body": "Patient deleted successfully."
-				}
-			]
-		},
-		{
-			"name": "Assign Doctor to Patient",
-			"request": {
-				"method": "PUT",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:9090/api/patients/1/doctor/2",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "9090",
-					"path": [
-						"api",
-						"patients",
-						"1",
-						"doctor",
-						"2"
 					]
-				}
-			},
-			"response": [
+				},
 				{
 					"name": "Assign Doctor to Patient",
-					"originalRequest": {
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": {
+								"password": "test123",
+								"username": "TestUser"
+							}
+						},
 						"method": "PUT",
 						"header": [],
-						"url": {
-							"raw": "http://localhost:9090/api/patients/6/doctor/5",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "9090",
-							"path": [
-								"api",
-								"patients",
-								"6",
-								"doctor",
-								"5"
-							]
-						}
+						"url": "http://localhost:9191/v1/api/patients/1/doctor/2"
 					},
-					"status": "OK",
-					"code": 200,
-					"_postman_previewlanguage": "json",
-					"header": [
+					"response": [
 						{
-							"key": "Content-Type",
-							"value": "application/json"
+							"name": "Failure When Doctor Not Present",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"url": "http://localhost:9191/v1/api/patients/1/doctor/2"
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 30 Dec 2022 08:28:45 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"timestamp\": \"2022-12-30T08:28:45.026+00:00\",\n    \"status\": 404,\n    \"error\": \"Not Found\",\n    \"path\": \"/v1/api/patients/1/doctor/2\"\n}"
 						},
 						{
-							"key": "Transfer-Encoding",
-							"value": "chunked"
-						},
-						{
-							"key": "Date",
-							"value": "Wed, 29 Jun 2022 01:44:00 GMT"
-						},
-						{
-							"key": "Keep-Alive",
-							"value": "timeout=60"
-						},
-						{
-							"key": "Connection",
-							"value": "keep-alive"
+							"name": "Assign Doctor to Patient",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"url": "http://localhost:9191/v1/api/patients/1/doctor/2"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 30 Dec 2022 08:35:56 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"name\": \"Patient A1\",\n    \"disease\": \"Disease A1\",\n    \"dateOfBirth\": \"2002-09-09T00:00:00.000+00:00\",\n    \"doctor\": {\n        \"id\": 2,\n        \"name\": \"Dr. Trivadi\",\n        \"email\": \"test@gmail.com\",\n        \"degree\": \"MBBS\",\n        \"specialization\": \"Heart Specialist\"\n    }\n}"
 						}
-					],
-					"cookie": [],
-					"body": "{\n    \"id\": 6,\n    \"name\": \"XYZ Patient\",\n    \"disease\": \"ABC Disease\",\n    \"dateOfBirth\": \"2002-09-09T00:00:00.000+00:00\",\n    \"doctor\": {\n        \"id\": 5,\n        \"name\": \"Dr. Chris\"\n    }\n}"
+					]
+				},
+				{
+					"name": "Delete Patient by Id",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": {
+								"password": "test123",
+								"username": "TestUser"
+							}
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:9191/v1/api/patients/1"
+					},
+					"response": [
+						{
+							"name": "Delete Patient by Id",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": "http://localhost:9191/v1/api/patients/1"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/plain;charset=UTF-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "29"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 30 Dec 2022 08:36:38 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "Patient deleted successfully."
+						}
+					]
 				}
 			]
 		}

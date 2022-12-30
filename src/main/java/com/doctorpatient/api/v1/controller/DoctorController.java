@@ -63,8 +63,12 @@ public class DoctorController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Doctor> updateDoctorNameById(@PathVariable("id") int doctorId, @RequestParam(name = "name", required = true) String doctorName) throws EntityNotFoundException {
-        return new ResponseEntity<Doctor>(doctorService.updateDoctorNameById(doctorId, doctorName), HttpStatus.OK);
+    public DoctorDto updateDoctorNameById(@PathVariable("id") int doctorId, @RequestParam(name = "name", required = true) String doctorName) throws EntityNotFoundException {
+        Doctor doctor = doctorService.updateDoctorNameById(doctorId, doctorName);
+        if (doctor != null) {
+            return modelMapper.map(doctor, DoctorDto.class);
+        }
+        return null;
     }
 
     @DeleteMapping("/{id}")
