@@ -160,8 +160,6 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
      */
     @Override
     protected ResponseEntity<Object> handleHttpMessageNotReadable(HttpMessageNotReadableException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
-        ServletWebRequest servletWebRequest = (ServletWebRequest) request;
-        //log.info("{} to {}", servletWebRequest.getHttpMethod(), servletWebRequest.getRequest().getServletPath());
         String error = "Malformed JSON request";
         return buildResponseEntity(new ApiError(HttpStatus.BAD_REQUEST, error, ex));
     }
@@ -214,7 +212,7 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
     protected ResponseEntity<Object> handleMethodArgumentTypeMismatch(MethodArgumentTypeMismatchException ex,
                                                                       WebRequest request) {
         ApiError apiError = new ApiError(BAD_REQUEST);
-        apiError.setMessage(String.format("The parameter '%s' of value '%s' could not be converted to type '%s'", ex.getName(), ex.getValue(), ex.getRequiredType().getSimpleName()));
+        apiError.setMessage(String.format("The parameter '%s' of value '%s' could not be converted to type '%s'", ex.getName(), ex.getValue(), ex.getRequiredType()));
         apiError.setDebugMessage(ex.getMessage());
         return buildResponseEntity(apiError);
     }
