@@ -73,7 +73,7 @@ http://<host-name>:9191/swagger-ui.html (Ex:- http://localhost:9191/swagger-ui.h
 
 ## Doctor API End Point
 
-- **listAllDoctors**
+- **Get All Doctors**
 ````
 Method : GET
 URL : http://localhost:9191/v1/api/doctors/list
@@ -102,7 +102,7 @@ HTTP Status Code :- 401
     }
 ````
 
-- **getDoctorById**
+- **Get Doctor By Id**
 ````
 Method : GET
 URL : http://localhost:9090/api/doctors/1
@@ -121,7 +121,7 @@ HTTP Status Code :- 200
 ````
 
 
-- **saveDoctor**
+- **Save Doctor**
 ````
 Method : POST
 URL : http://localhost:9191/v1/api/doctors/add
@@ -148,7 +148,7 @@ HTTP Status Code :- 200
 
 ````
 
-- **addPatientUnderDoctor**
+- **Add Patient Under Doctor**
 ````
 Method : POST
 URL : http://localhost:9191/v1/api/doctors/1/patient
@@ -169,7 +169,7 @@ Response :- "Patient added under doctor successfully."
 ````
 
 
-- **updateDoctorNameById**
+- **Update DoctorName By Id**
 ````
 Method : PUT
 URL : http://localhost:9191/v1/api/doctors/1?name=Dr. Atual Trivadi
@@ -200,7 +200,7 @@ Response :- "Patient discharged successfully."
 
 ````
 
-- **dischargePatient**
+- **Discharge Patient**
 
 ````
 Method : DELETE
@@ -213,6 +213,157 @@ Response :- "Doctor deleted successfully."
 
 ````
 
+
+## Patient API End Point
+
+- **Get All Patients**
+````
+Method : GET
+URL : http://localhost:9191/v1/api/patients/list
+Header : Authorization : Basic VGVzdFVzZXI6dGVzdDEyMw==
+
+
+Response Case 1 :- Valid Response
+HTTP Status Code :- 200
+    [
+        {
+            "id": 1,
+            "name": "XYZ Patient",
+            "disease": "ABC Disease",
+            "dateOfBirth": "2022-12-30T00:00:00.000+00:00"
+        }
+    ]
+
+Response Case 2:-  InValid Response with Authorization Missing in Header
+HTTP Status Code :- 401
+    {
+        "timestamp": "2022-12-30T08:06:05.844+00:00",
+        "status": 401,
+        "error": "Unauthorized",
+        "path": "/v1/api/patients/list"
+    }
+````
+
+
+- **Save Patient**
+````
+Method : POST
+URL : http://localhost:9191/v1/api/patients/add
+Header : Authorization : Basic VGVzdFVzZXI6dGVzdDEyMw==
+         Content-Type : application/json
+
+Request Body Json :-
+    {
+        "name": "John",
+    	"disease": "Fever",
+    	"dateOfBirth": "1990-20-09"
+    }
+
+Response :-
+HTTP Status Code :- 200
+    {
+        "id": 2,
+        "name": "John",
+        "disease": "Fever",
+        "dateOfBirth": "1991-08-09T00:00:00.000+00:00"
+    }
+
+````
+
+- **Get Patient By Id**
+````
+Method : GET
+URL : http://localhost:9191/v1/api/patients/1
+Header : Authorization : Basic VGVzdFVzZXI6dGVzdDEyMw==
+
+Response :-
+HTTP Status Code :- 200
+    {
+        "id": 1,
+        "name": "John",
+        "disease": "Fever",
+        "dateOfBirth": "1991-08-09T00:00:00.000+00:00"
+    }
+
+````
+
+- **Update Patient By Id**
+````
+Method : PUT
+URL : http://localhost:9191/v1/api/patients/1
+Header : Authorization : Basic VGVzdFVzZXI6dGVzdDEyMw==
+
+Request Json Body :-
+    {
+        "name": "Patient A1",
+    	"disease": "Disease A1",
+    	"dateOfBirth": "2002-09-09"
+    }
+
+Response :- Valid Response
+HTTP Status Code :- 200
+Response :-
+    {
+        "id": 1,
+        "name": "Patient A1",
+        "disease": "Disease A1",
+        "dateOfBirth": "2002-09-09T00:00:00.000+00:00"
+    }
+
+````
+
+- **Assign Doctor to Patient**
+````
+Method : PUT
+URL : http://localhost:9191/v1/api/patients/1/doctor/2
+Header : Authorization : Basic VGVzdFVzZXI6dGVzdDEyMw==
+
+Request Json Body :-
+    {
+        "name": "Patient A1",
+    	"disease": "Disease A1",
+    	"dateOfBirth": "2002-09-09"
+    }
+
+Response Case 1 :- When Valid Docker ID Present in DB
+HTTP Status Code :- 200
+    {
+        "id": 1,
+        "name": "Patient A1",
+        "disease": "Disease A1",
+        "dateOfBirth": "2002-09-09T00:00:00.000+00:00",
+        "doctor": {
+            "id": 2,
+            "name": "Dr. Trivadi",
+            "email": "test@gmail.com",
+            "degree": "MBBS",
+            "specialization": "Heart Specialist"
+        }
+    }
+
+Response Case 2 :- When InValid Docker ID Pass
+HTTP Status Code :- 404
+    {
+        "timestamp": "2022-12-30T08:28:45.026+00:00",
+        "status": 404,
+        "error": "Not Found",
+        "path": "/v1/api/patients/1/doctor/2"
+    }
+
+````
+
+- **Delete Patient By Id**
+
+````
+Method : DELETE
+URL : http://localhost:9191/v1/api/patients/1
+Header : Authorization : Basic VGVzdFVzZXI6dGVzdDEyMw==
+
+Response :- Valid Response
+HTTP Status Code :- 200
+Response :- "Patient deleted successfully."
+
+````
 
 ## Contributors
 [Pavan Patel](https://www.linkedin.com/in/pavan-patel-991a5a38/)
