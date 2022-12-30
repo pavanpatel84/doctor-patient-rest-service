@@ -71,15 +71,17 @@ http://<host-name>:9191/swagger-ui.html (Ex:- http://localhost:9191/swagger-ui.h
 - **Run Without Docker**  - Please make sure update 'application.yml' file For DB connection and API Authentication User Name and Password
 - **Run With Docker**     - In case if you use local database then only we have to provide host like 'host.docker.internal' in place of localhost in Docker run command
 
-## API End Point
+## Doctor API End Point
 
 - **listAllDoctors**
 ````
-**Method :** GET
-**URL :** http://localhost:9191/v1/api/doctors/list
-**Header :** Authorization : Basic VGVzdFVzZXI6dGVzdDEyMw==
+Method : GET
+URL : http://localhost:9191/v1/api/doctors/list
+Header : Authorization : Basic VGVzdFVzZXI6dGVzdDEyMw==
 
-**Case 1 :- Valid Request**
+
+Response Case 1 :- Valid Response
+HTTP Status Code :- 200
     [
         {
             "id": 1,
@@ -90,24 +92,126 @@ http://<host-name>:9191/swagger-ui.html (Ex:- http://localhost:9191/swagger-ui.h
         }
     ]
 
-Case 2:-  InValid Request with Authorization Missing in Header
+Response Case 2:-  InValid Response with Authorization Missing in Header
+HTTP Status Code :- 401
     {
         "timestamp": "2022-12-30T08:06:05.844+00:00",
         "status": 401,
         "error": "Unauthorized",
         "path": "/v1/api/doctors/list"
     }
+````
+
+- **getDoctorById**
+````
+Method : GET
+URL : http://localhost:9090/api/doctors/1
+Header : Authorization : Basic VGVzdFVzZXI6dGVzdDEyMw==
+
+Response :-
+HTTP Status Code :- 200
+    {
+       "id": 1,
+       "name": "Dr. Trivadi",
+       "email": "test@gmail.com",
+       "degree": "MBBS",
+       "specialization": "Heart Specialist"
+    }
 
 ````
 
-- **getDoctorById**          - In case if you use local database then only we have to provide host like 'host.docker.internal' in place of localhost in Docker run command
-- **saveDoctor**             - In case if you use local database then only we have to provide host like 'host.docker.internal' in place of localhost in Docker run command
-- **addPatientUnderDoctor**  - In case if you use local database then only we have to provide host like 'host.docker.internal' in place of localhost in Docker run command
-- **updateDoctorNameById**   - In case if you use local database then only we have to provide host like 'host.docker.internal' in place of localhost in Docker run command
-- **dischargePatient**       - In case if you use local database then only we have to provide host like 'host.docker.internal' in place of localhost in Docker run command
-- **dischargePatient**       - In case if you use local database then only we have to provide host like 'host.docker.internal' in place of localhost in Docker run command
+
+- **saveDoctor**
+````
+Method : POST
+URL : http://localhost:9191/v1/api/doctors/add
+Header : Authorization : Basic VGVzdFVzZXI6dGVzdDEyMw==
+         Content-Type : application/json
+
+Request Body Json :-
+    {
+      "degree": "MBBS",
+      "email": "test@gmail.com",
+      "name": "Dr. Trivadi",
+      "specialization": "Heart Specialist"
+    }
+
+Response :-
+HTTP Status Code :- 200
+    {
+       "id": 1,
+       "name": "Dr. Trivadi",
+       "email": "test@gmail.com",
+       "degree": "MBBS",
+       "specialization": "Heart Specialist"
+    }
+
+````
+
+- **addPatientUnderDoctor**
+````
+Method : POST
+URL : http://localhost:9191/v1/api/doctors/1/patient
+Header : Authorization : Basic VGVzdFVzZXI6dGVzdDEyMw==
+         Content-Type : application/json
+
+Request Body Json :-
+    {
+    	"name": "XYZ Patient",
+    	"disease": "ABC Disease",
+    	"dateOfBirth": "2022-12-30"
+    }
+
+Response :- Valid Response
+HTTP Status Code :- 200
+Response :- "Patient added under doctor successfully."
+
+````
 
 
+- **updateDoctorNameById**
+````
+Method : PUT
+URL : http://localhost:9191/v1/api/doctors/1?name=Dr. Atual Trivadi
+Header : Authorization : Basic VGVzdFVzZXI6dGVzdDEyMw==
+
+Response :- Valid Response
+HTTP Status Code :- 200
+Response :-
+    {
+        "id": 1,
+        "name": "Dr. Atual Trivadi",
+        "email": "test@gmail.com",
+        "degree": "MBBS",
+        "specialization": "Heart Specialist"
+    }
+
+````
+
+- **dischargePatient**
+````
+Method : PUT
+URL : http://localhost:9191/v1/api/doctors/1/patient/1
+Header : Authorization : Basic VGVzdFVzZXI6dGVzdDEyMw==
+
+Response :- Valid Response
+HTTP Status Code :- 200
+Response :- "Patient discharged successfully."
+
+````
+
+- **dischargePatient**
+
+````
+Method : DELETE
+URL : http://localhost:9191/v1/api/doctors/1
+Header : Authorization : Basic VGVzdFVzZXI6dGVzdDEyMw==
+
+Response :- Valid Response
+HTTP Status Code :- 200
+Response :- "Doctor deleted successfully."
+
+````
 
 
 ## Contributors
