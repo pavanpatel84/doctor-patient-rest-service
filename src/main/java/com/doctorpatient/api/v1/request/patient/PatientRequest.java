@@ -16,14 +16,13 @@ import java.util.Date;
 @NoArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class PatientRequest {
-    @NotNull(message = "{constraints.NotEmpty.message}")
+    @NotNull(message = "name filed shouldn't empty or null")
     private String name;
 
-    @NotNull(message = "{constraints.NotEmpty.message}")
+    @NotNull(message = "disease filed shouldn't empty or null")
     private String disease;
 
-    @NotNull(message = "{constraints.NotEmpty.message}")
-
+    @NotNull(message = "dateOfBirth filed shouldn't empty or null")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dateOfBirth;
 }

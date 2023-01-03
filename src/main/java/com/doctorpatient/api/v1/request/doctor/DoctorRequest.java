@@ -15,16 +15,16 @@ import javax.validation.constraints.NotNull;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class DoctorRequest {
 
-    @NotNull(message = "{constraints.NotEmpty.message}")
+    @NotNull(message = "name filed shouldn't empty or null")
     private String name;
 
-    @NotNull(message = "{constraints.NotEmpty.message}")
+    @NotNull(message = "email filed shouldn't empty or null")
     private String email;
 
-    @NotNull(message = "{constraints.NotEmpty.message}")
+    @NotNull(message = "degree filed shouldn't empty or null")
     private String degree;
 
-    @NotNull(message = "{constraints.NotEmpty.message}")
+    @NotNull(message = "specialization filed shouldn't empty or null")
     private String specialization;
 
 }
